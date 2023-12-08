@@ -1,19 +1,11 @@
 import PostPagination from "@/components/PostPagination";
 import PostsList from "@/components/PostsList";
-import { allPosts } from "contentlayer/generated"
-
-const posts = allPosts.sort((a, b) => b.date.localeCompare(a.date));
-
-const totalPosts = posts.length
-const postsPerPage = 2
-const totalPage = Math.ceil(totalPosts / postsPerPage)
-console.log(totalPage)
+import { getPostPagination, totalPage } from "@/utils/PaginationUtil"
 
 export default function LayoutPage({ params }) {
 
     const currentPage = parseInt(params.number)
-    const offset = (currentPage - 1) * postsPerPage
-    const currentPosts = posts.slice(offset, offset + postsPerPage)
+    const { currentPosts } = getPostPagination(currentPage)
 
     return (
         <div>

@@ -2,11 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-h2{
-    @apply text-center my-4 text-indigo-500 text-2xl
+h2 {
+  @apply my-4 text-indigo-500 text-2xl;
 }
 
-p{
-    @apply my-4 text-gray-800
+h3 {
+  @apply my-4 text-indigo-700 text-xl;
 }
 
+p {
+  @apply mb-4 text-gray-800;
+}
+
+pre > code {
+  @apply grid;
+}
+
+pre {
+  @apply p-4 rounded my-4;
+}
+
+article pre code {
+  @apply bg-transparent text-sm border-none;
+}
+
+article code {
+  @apply bg-gray-200 px-2 rounded text-sm border;
+}
+
+p > code,
+h3 > code {
+  @apply bg-gray-200 px-2 rounded text-sm;
+}

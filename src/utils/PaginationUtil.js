@@ -7,6 +7,11 @@ const postsPerPage = 2
 export const totalPage = Math.ceil(totalPosts / postsPerPage)
 
 export const getPostPagination = (currentPage = 1) => {
+
+    if (currentPage > totalPage) {
+        throw new Error(`Page${currentPage} does not exist`)
+    }
+
     const offset = (currentPage - 1) * postsPerPage
     const currentPosts = posts.slice(offset, offset + postsPerPage)
 

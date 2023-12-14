@@ -2,12 +2,12 @@ import { allPosts } from "contentlayer/generated"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { notFound } from "next/navigation";
 
+
+//generar páginas dinámicas al momento de la compilación `npm run build`
 export const generateStaticParams = () => {
     return allPosts.map((post) => ({ slug: post._raw.flattenedPath }))
 }
 
-
-//generar páginas dinámicas al momento de la compilación `npm run build`
 export async function generateMetadata({ params }) {
     const post = allPosts.find((p) => p._raw.flattenedPath === params.slug)
     return {
